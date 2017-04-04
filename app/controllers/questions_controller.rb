@@ -23,11 +23,18 @@ class QuestionsController < ApplicationController
       
   end
   
-  def edit #GET 
-    @question = Question.find(params[:id])
+  def edit #GET
+  @question = Question.find(params[:id])
   end
   
   def update #PATCH
+  @question = Question.find(params[:id])
+  
+  if @question.update_attributes(question_params)
+    redirect_to @question, notice: "Successful"
+  else
+    render :edit
+  end
   end
   
   def delete

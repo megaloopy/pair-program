@@ -1,1 +1,12 @@
 <h1>Edit question</h1>
+
+<%= form_for(@question) do |q| %>
+  <%= q.label :title %>
+  <%= q.text_field :title %>
+  
+  <%= q.label :body %>
+  <%= q.text_field :body %>
+  
+  <%= q.submit "Submmit" %>
+  
+<% end %>
