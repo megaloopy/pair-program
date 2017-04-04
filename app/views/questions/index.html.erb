@@ -1,0 +1,8 @@
+<h1>Questions-index</h1>
+<p>This is where the main question posts will be</p>
+
+<% @questions.each do |q| %>
+  <h3>Title: <%= q.title %></h3>
+  <p>Body: <%= q.body %></p>
+  <%= link_to "Edit", edit_question_path(q) %>
+<% end %>
