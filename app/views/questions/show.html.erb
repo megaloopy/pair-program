@@ -1,3 +1,13 @@
-<%= @question.title %><br>
-<%= @question.body %><br>
-<%= link_to "Edit", edit_question_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1 class="text-center"><%= @question.title %></h1><br>
+      <h2 class="text-center"><%= @question.body %></h2><br>
+      <%= link_to "Edit", edit_question_path, class: "btn btn-primary col-md-6 col-md-offset-3" %>
+      <br>
+      <br>
+      <%= link_to "Delete", question_path(@question), method: :delete, data: {confirm: 'Are you sure
+      Mofo?'}, class: "btn btn-danger col-md-6 col-md-offset-3" %>
+    </div>
+  </div>
+</div>

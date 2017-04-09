@@ -30,17 +30,18 @@ class QuestionsController < ApplicationController
   def update #PATCH
   @question = Question.find(params[:id])
   
-  if @question.update_attributes(question_params)
-    redirect_to @question, notice: "Successful"
-  else
-    render :edit
-  end
-  end
-  
-  def delete
+    if @question.update_attributes(question_params)
+      redirect_to @question, notice: "Successful"
+    else
+      render :edit
+    end
   end
   
   def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    flash[:success] = "Question deleted!"
+    redirect_to root_path
   end
   
   private
