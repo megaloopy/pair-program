@@ -1,12 +1,12 @@
-<h1>Edit question</h1>
-
-<%= form_for(@question) do |q| %>
-  <%= q.label :title %>
-  <%= q.text_field :title %>
-  
-  <%= q.label :body %>
-  <%= q.text_field :body %>
-  
-  <%= q.submit "Submmit" %>
-  
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center heading">Edit question</h1><br>
+      <%= simple_form_for(@question) do |q| %>
+        <h2><%= q.input :title %></h2>
+        <h2><%= q.input :body %></h2>
+        <%= q.button :submit, "Update Post", class: "btn btn-primary col-md-12" %>
+      <% end %>
+   </div>
+  </div>
+</div>
