@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
@@ -14,13 +14,21 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.save
-      redirect user_path
+
+    if @user.update_attributes(user_params)
+      flash[:success] = "User info updated"
+      redirect_to root
     else
-      render 'edit'
+      render :edit
     end
   end
 
-  def delete
+  def destroy
+  
   end
+  
+  private
+    def user_params
+      params.require[:user].permit(:user_name, :email, :encrypted_password)
+    end
 end
