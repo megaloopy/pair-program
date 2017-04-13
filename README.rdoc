@@ -26,3 +26,6 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+fix:
+http://stackoverflow.com/questions/22300692/rails-devise-cant-update-my-new-fields-like-username
