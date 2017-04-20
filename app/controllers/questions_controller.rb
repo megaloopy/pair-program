@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   
   def index
-    @questions = Question.all
+    @questions = Question.all.order('created_at DESC')
   end
   
   def show
@@ -16,6 +17,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     
     if @question.save
+      flash[:success] = "Question created!"
       redirect_to root_path
     else
       render 'new'
@@ -40,7 +42,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy
-    flash[:success] = "Question deleted!"
+    flash[:danger] = "Question deleted!"
     redirect_to root_path
   end
   
