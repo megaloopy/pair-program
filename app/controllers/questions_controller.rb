@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   
   def index
     @questions = Question.all.order('created_at DESC')
+    @answers = Answer.all(@questions).order('created_at DESC')
   end
   
   def show
