@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   
   def create #POST
     #@question = Question.new.(question_params)
-    @question = current_user.questions.build(question_params).order('created_at DESC')
+    @question = current_user.questions.build(question_params)
     
     if @question.save
       flash[:success] = "Question created!"
@@ -30,7 +30,6 @@ class QuestionsController < ApplicationController
   def edit #GET
    if current_user
     @question = Question.find(params[:id])
-    redirect_to @question
    end
   end
   
