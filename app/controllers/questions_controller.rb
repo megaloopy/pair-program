@@ -15,7 +15,6 @@ class QuestionsController < ApplicationController
   end
   
   def create #POST
-    #@question = Question.new.(question_params)
     @question = current_user.questions.build(question_params)
     
     if @question.save
