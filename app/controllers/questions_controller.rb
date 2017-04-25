@@ -3,11 +3,11 @@ class QuestionsController < ApplicationController
   
   def index
     @questions = Question.all.order('created_at DESC')
-    @answers = Answer.all(@questions).order('created_at DESC')
   end
   
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers(params[:question_id])
   end
   
   def new #GET
@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   
   def create #POST
     #@question = Question.new.(question_params)
-    @question = current_user.questions.build(question_params)
+    @question = current_user.questions.build(question_params).order('created_at DESC')
     
     if @question.save
       flash[:success] = "Question created!"

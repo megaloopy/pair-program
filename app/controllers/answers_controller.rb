@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   
   def index
-    #@answers = Answer.all(@question).order('created_at DESC')
+    @answers = Answer.all
   end
   
   def new
