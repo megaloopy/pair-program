@@ -29,4 +29,6 @@ Error:
 
 Can't get answer to save ERROR: no route matches [POST]
 
+but can display /question/id/answers
+
 **Can't establish a link between the current answer beings saved and the question being answered
