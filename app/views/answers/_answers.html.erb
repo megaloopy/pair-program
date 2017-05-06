@@ -1,0 +1,10 @@
+<div class="row">
+  <% @answers.reverse.each do |a| %>
+    <div class="well well-sm">
+      <%= a.body %>
+      <% if a.created_at %>
+        <p><small><i class="glyphicon glyphicon-time"></i> <%= time_ago_in_words(a.created_at) %> ago</small></p>
+      <% end %>
+    </div>
+<% end %>
+</div>

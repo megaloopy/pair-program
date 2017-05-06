@@ -1,21 +1,21 @@
 class AnswersController < ApplicationController
   
   def index
-    @answers = Answer.all
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers
   end
   
   def new
-    @answer = Answer.new
+    @question = Question.find(params[:id])
+    
+    @answer = @question.answers.build
   end
   
   def create
-    @answer = current_user.answer.build(params[:question_id])
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.create(answer_params)
+    redirect_to question_answers_path(@question)
     
-      if @answer.save
-        redirect_to :back, flash[:info] = "Your answer has been published"
-      else flash[:danger] = "Your answer wasn't saved Mofo!" 
-        render :form
-      end  
   end
   
   def edit
