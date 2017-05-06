@@ -1,4 +1,5 @@
 <%= simple_form_for([@question, @question.answers.build]) do |a| %>
-  <%= a.text_area :body %><br>
-  <%= a.submit %>
+  <%= a.text_area :body, class: "form-control" %><br>
+  <input class="btn btn-primary" type="submit" name="commit" value="Post Answer" />
 <% end %>
+
